@@ -1,0 +1,85 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model TaskManagerWebApp.Models.TaskItem
+
+<body class="bg-dark text-white">
+
+    @if (TempData["Message"] is not null)
+    {
+        <div class="alert alert-danger text-center mx-auto col-sm-6" role="alert">
+            @TempData["Message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="container fs-5 pt-4">
+
+        <form method="post" class="bg-dark border p-4 rounded" style="width:50%; margin:auto">
+            
+            <input type="hidden" asp-for="Id" />
+            
+            <h1 class="text-center mb-3">Delete Task</h1>
+
+            <div class="mb-3 col-sm-9" style="margin:auto;">
+                <label for="exampleInputEmail1" class="form-label" asp-for="TaskName"><b>Task Name: </b>@Model.TaskName</label>
+            </div>
+
+           
+            @if (Model.Description is not null)
+            {
+                <div class="mb-3 col-sm-9" style="margin:auto;">
+                    <label for="exampleInputEmail1" class="form-label" asp-for="Description"><b>Description:</b> @Model.Description</label>
+                </div>
+            }
+            else
+            {
+                <div class="mb-3 col-sm-9" style="margin:auto;">
+                    <label for="exampleInputEmail1" class="form-label" asp-for="Description"><b>Description:</b> None</label>
+                </div>
+                
+            }
+            @if(Model.DueDate is not null)
+            {
+                <div class="mb-3 col-sm-9" style="margin:auto;">
+                    <label for="exampleInputPassword1" class="form-label" asp-for="DueDate"><b>DueDate:</b> @Model.DueDate</label>
+                </div>
+            }
+
+            else
+            {
+                <div class="mb-3 col-sm-9" style="margin:auto;">
+                    <label for="exampleInputPassword1" class="form-label" asp-for="DueDate"><b>DueDate:</b> None</label>
+                </div>
+
+            }
+
+
+            @if (Model.IsCompleted)
+            { 
+                 <div class="mb-3 col-sm-9" style="margin:auto;">
+                    <label for="exampleInputEmail1" class="form-label" asp-for="IsCompleted"><b>Status: </b>  Completed</label>
+                 </div> 
+            }
+            else
+            {
+                <div class="mb-3 col-sm-9" style="margin:auto;">
+                    <label for="exampleInputEmail1" class="form-label" asp-for="IsCompleted"><b>Status: </b>  InComplete</label>
+                </div>
+            }
+
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
+            </div>
+
+
+        </form>
+    </div>
+</body>
+
+
+

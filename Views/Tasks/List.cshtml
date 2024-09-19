@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<TaskManagerWebApp.Models.TaskItem>
+
+<body class="bg-dark">
+
+<h1 style="color:white">Tasks</h1>
+    <table class="table table-dark">
+    <thead>
+        <tr>
+        <th>TaskItem</th>
+        <th>Status</th>
+        <th>Due Date</th>
+        <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach(var task in Model)
+        {
+            <tr>
+            <td>@task.TaskName</td>
+                @if (task.IsCompleted)
+                {
+                    <td style="font-weight:bold; color:green">Completed</td>
+                }
+                else
+                {
+                     <td style="font-weight:bold; color:firebrick">InComplete</td>
+                }
+
+                @if (task.DueDate is null)
+                {
+                    <td>None</td>
+                }
+                else
+                {
+                    <td>@task.DueDate</td>
+
+                }
+                <td class="d-flex justify-content-evenly">
+                    <a class="btn btn-outline-info" asp-controller="Tasks" asp-action="ViewTask" asp-route-id="@task.Id">View</a>
+                    <a class="btn btn-outline-success" asp-controller="Tasks" asp-action="Edit" asp-route-id="@task.Id">Edit</a>
+                    <a class="btn btn-outline-danger" asp-controller="Tasks" asp-action="Delete" asp-route-id="@task.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</body>
