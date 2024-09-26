@@ -8,14 +8,6 @@
 
 <body class="bg-dark text-white">
 
-    @if (TempData["Message"] is not null)
-    {
-        <div class="alert alert-danger text-center mx-auto col-sm-6" role="alert">
-            @TempData["Message"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    }
-
     <div class="container fs-5 pt-4">
 
         <form method="post" class="bg-dark border p-4 rounded" style="width:50%; margin:auto">
@@ -28,7 +20,6 @@
                 <label for="exampleInputEmail1" class="form-label" asp-for="TaskName"><b>Task Name: </b>@Model.TaskName</label>
             </div>
 
-           
             @if (Model.Description is not null)
             {
                 <div class="mb-3 col-sm-9" style="margin:auto;">
@@ -40,9 +31,11 @@
                 <div class="mb-3 col-sm-9" style="margin:auto;">
                     <label for="exampleInputEmail1" class="form-label" asp-for="Description"><b>Description:</b> None</label>
                 </div>
-                
+
             }
-            @if(Model.DueDate is not null)
+            
+
+            @if (Model.DueDate is not null)
             {
                 <div class="mb-3 col-sm-9" style="margin:auto;">
                     <label for="exampleInputPassword1" class="form-label" asp-for="DueDate"><b>DueDate:</b> @Model.DueDate</label>

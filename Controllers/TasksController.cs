@@ -42,9 +42,9 @@ namespace TaskManagerWebApp.Controllers
             };
             await appDbContext.TaskItems.AddAsync(taskItem);
             await appDbContext.SaveChangesAsync();
-            TempData["Message"] = "Task Added!";
+            TempData["Message"] = $"Task '{taskItem.TaskName}' Added To The List!";
 
-            return RedirectToAction();
+            return RedirectToAction("List");
         }
 
 
@@ -69,10 +69,10 @@ namespace TaskManagerWebApp.Controllers
 
                 await appDbContext.SaveChangesAsync();
 
-                TempData["Message"] = "Task Edited!";
+                TempData["Message"] = $"Task '{taskItem.TaskName}' Edited!";
 
             }
-            return View();
+            return RedirectToAction("List");
         }
 
 
@@ -93,10 +93,9 @@ namespace TaskManagerWebApp.Controllers
                 appDbContext.TaskItems.Remove(taskItem);
                 await appDbContext.SaveChangesAsync();
 
-                TempData["Message"] = "Task Deleted!";
-
+                TempData["Message"] = $"Task '{taskItem.TaskName}' Deleted!";
             }
-            return View(viewModel);
+            return RedirectToAction("List");
         }
 
 
