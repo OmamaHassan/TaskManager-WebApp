@@ -32,24 +32,24 @@
         {
             <tr>
             <td>@task.TaskName</td>
-                @if (task.IsCompleted)
-                {
-                    <td style="font-weight:bold; color:green">Completed</td>
-                }
-                else
-                {
-                     <td style="font-weight:bold; color:firebrick">InComplete</td>
-                }
-
-                @if (task.DueDate is null)
-                {
-                    <td>None</td>
-                }
-                else
-                {
-                    <td>@task.DueDate</td>
-
-                }
+            @if (task.IsCompleted)
+            {
+                 <td style="font-weight:bold; color:green">Completed</td>
+            }
+            else
+            {
+                 <td style="font-weight:bold; color:firebrick">InComplete</td>
+            }
+              
+            @if (task.DueDate is null)
+            {
+                 <td>None</td>
+            }
+            else
+            {
+                 <td>@task.DueDate</td>
+            }
+              
                 <td class="d-flex justify-content-evenly">
                     <a class="btn btn-outline-info" asp-controller="Tasks" asp-action="ViewTask" asp-route-id="@task.Id">View</a>
                     <a class="btn btn-outline-success" asp-controller="Tasks" asp-action="Edit" asp-route-id="@task.Id">Edit</a>

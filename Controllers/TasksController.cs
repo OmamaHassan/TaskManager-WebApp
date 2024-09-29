@@ -65,7 +65,7 @@ namespace TaskManagerWebApp.Controllers
                 taskItem.TaskName = viewModel.TaskName;
                 taskItem.Description = viewModel.Description;
                 taskItem.IsCompleted = viewModel.IsCompleted;
-                taskItem.DueDate = taskItem.DueDate;
+                taskItem.DueDate = viewModel.DueDate;
 
                 await appDbContext.SaveChangesAsync();
 
